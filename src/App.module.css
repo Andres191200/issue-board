@@ -1,0 +1,75 @@
+.page {
+  min-height: 100dvh;
+  background: var(--bg);
+  padding: 48px 20px 96px;
+}
+
+.shell {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.kicker {
+  font-family: var(--font-ui);
+  font-size: var(--text-meta);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-500);
+}
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 0.95;
+  letter-spacing: 0.5px;
+  color: var(--fg);
+}
+.subtitle {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  color: var(--fg-2);
+  max-width: 52ch;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sectionTitle {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: var(--text-label);
+  color: var(--fg);
+  letter-spacing: 0.02em;
+}
+
+.card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}

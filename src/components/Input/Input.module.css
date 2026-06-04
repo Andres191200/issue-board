@@ -1,0 +1,102 @@
+/* Surface input: #241f2d fill, 4px radius, 42px tall, Manrope value, optional
+   leading/trailing icons. Sourced from preview/inputs.html. */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-family: var(--font-ui);
+  font-size: var(--text-meta);
+  line-height: 1;
+  color: var(--fg);
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 42px;
+  padding: 0 var(--space-3);
+  background: var(--surface);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--fg-2);
+  transition:
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+
+/* focus styling driven by :focus-within so the whole shell reacts to the
+   inner <input> gaining focus — no focus state in React needed */
+.control:focus-within {
+  border-color: var(--green-500);
+  box-shadow: var(--shadow-glow);
+  color: var(--fg-1);
+}
+
+.control.error {
+  border-color: var(--error);
+  box-shadow: none;
+  color: var(--error);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-value);
+  font-size: var(--text-body);
+  line-height: 1.35;
+  color: var(--fg-1);
+}
+.input::placeholder {
+  color: var(--fg-2);
+}
+.input:disabled {
+  cursor: not-allowed;
+  color: var(--fg-2);
+}
+
+/* icon slots inherit the control color so they tint with focus/error state */
+.adornment {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+/* trailing affordance that is actually a button (e.g. password reveal) */
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--fg-2);
+  transition: color var(--dur-fast) var(--ease);
+}
+.actionButton:hover {
+  color: var(--fg-1);
+}
+.actionButton:focus-visible {
+  color: var(--green-500);
+  outline: none;
+}
+
+.message {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  line-height: 1.2;
+}
+.errorMessage {
+  color: var(--error);
+}
+.hintMessage {
+  color: var(--fg-3);
+}

@@ -1,0 +1,118 @@
+/* Filled pitch-green CTA. Anton label, 4px radius, 48px tall.
+   States sourced from preview/buttons.html + Primitives.jsx. */
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: 38px;
+  padding: 0 28px;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: var(--text-button);
+  letter-spacing: 0.5px;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+
+.fullWidth {
+  width: 100%;
+  padding-inline: 0;
+}
+
+.sm {
+  height: 40px;
+  font-size: 20px;
+}
+
+/* press affordance — darken + subtle scale-down (0.98) per VISUAL FOUNDATIONS */
+.button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.button:focus-visible {
+  box-shadow: var(--shadow-glow);
+}
+
+/* ---- Variants ------------------------------------------------------------ */
+.primary {
+  background: var(--green-500);
+  color: var(--on-primary);
+}
+.primary:hover:not(:disabled) {
+  background: var(--green-400);
+}
+.primary:active:not(:disabled) {
+  background: var(--primary-pressed);
+}
+
+.secondary {
+  background: transparent;
+  color: var(--green-500);
+  border-color: var(--green-500);
+}
+.secondary:hover:not(:disabled) {
+  background: rgba(35, 148, 20, 0.12);
+}
+.secondary:active:not(:disabled) {
+  color: var(--primary-pressed);
+  border-color: var(--primary-pressed);
+}
+
+.danger {
+  background: var(--error);
+  color: var(--on-primary);
+}
+.danger:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+/* ---- Disabled / loading -------------------------------------------------- */
+.button:disabled {
+  cursor: default;
+}
+.primary:disabled,
+.danger:disabled {
+  background: var(--primary-disabled);
+  color: #d9d9d9;
+  border-color: transparent;
+}
+.secondary:disabled {
+  color: var(--primary-disabled);
+  border-color: var(--primary-disabled);
+  background: transparent;
+}
+
+/* keep label width stable while the spinner overlays it */
+.loadingLabel {
+  visibility: hidden;
+}
+.spinner {
+  position: absolute;
+  display: inline-flex;
+  animation: ds-spin 0.7s linear infinite;
+}
+
+@keyframes ds-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+  .spinner {
+    animation-duration: 1.4s;
+  }
+}

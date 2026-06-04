@@ -1,0 +1,84 @@
+/* ============================================================================
+   Arma tu 11 — Design System  ·  Colors & Type
+   Dark-mode football team builder for the World Cup (Argentine Spanish)
+   All values sourced from the Figma file "design-system-arma-tu-11.fig".
+   Inter + Manrope are loaded from Google Fonts in index.html.
+   ============================================================================ */
+
+:root {
+  /* ---- Brand / Primary green scale (Dark mode) --------------------------- */
+  --green-50: #121c0b;
+  --green-100: #183211;
+  --green-200: #1d4914;
+  --green-300: #216116;
+  --green-400: #237a16;
+  --green-500: #239414; /* PRIMARY — pitch green, the brand colour */
+  --green-600: #54a642;
+  --green-700: #7ab867;
+  --green-800: #9cca8c;
+  --green-900: #bddcb2;
+  --green-950: #deedd8;
+
+  --primary: var(--green-500);
+  --primary-pressed: #155a0c; /* darker green — pressed / active button */
+  --primary-disabled: #808080; /* neutral grey — disabled primary button  */
+
+  /* ---- Surfaces / backgrounds ------------------------------------------- */
+  --bg: #100e14; /* app background (near-black aubergine)          */
+  --bg-pure: #020202; /* true black — color-system canvas, overlays     */
+  --surface: #241f2d; /* inputs, cards, dropdown rows                   */
+  --surface-2: #1a1622; /* slightly raised vs bg, below surface           */
+
+  /* ---- Text -------------------------------------------------------------- */
+  --fg: #ffffff; /* headings, high-emphasis                         */
+  --fg-1: #f5f5f5; /* default body / on-surface text                  */
+  --fg-2: #a6a6a6; /* placeholder, secondary                          */
+  --fg-3: #666666; /* hints, captions, hex labels                     */
+  --on-primary: #f5f5f5; /* text on green buttons                           */
+
+  /* ---- Semantic ---------------------------------------------------------- */
+  --error: #c50b0b;
+  --success: var(--green-500);
+  --border: #2c2735; /* hairline on surfaces                            */
+  --border-focus: var(--green-500);
+
+  /* ---- Type families ----------------------------------------------------- */
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter",
+    system-ui, sans-serif; /* Apple-style display — real SF on Apple, Inter elsewhere */
+  --font-ui: "Inter", system-ui, sans-serif; /* labels, body, UI chrome      */
+  --font-value: "Inter", system-ui, sans-serif; /* input values, data           */
+
+  /* ---- Type scale (px) --------------------------------------------------- */
+  --text-display: 32px; /* Inter Bold 32 — screen titles                    */
+  --text-button: 18px; /* Anton 18 — button labels                         */
+
+  --text-cta: 24px; /* Anton 24 — button labels                         */
+  --text-body: 16px; /* Manrope/Inter 16 — inputs, body                  */
+  --text-label: 14px; /* Inter 14 — section labels                        */
+  --text-meta: 12px; /* Inter 12 — field labels, captions                */
+  --text-micro: 10px; /* Inter 10 — token hex codes                       */
+
+  /* ---- Radii ------------------------------------------------------------- */
+  --radius-sm: 4px; /* buttons, inputs, dropdown rows                     */
+  --radius-md: 10px; /* swatches, chips, cards                             */
+  --radius-pill: 999px;
+
+  /* ---- Spacing (4px base) ------------------------------------------------ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* ---- Elevation --------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 0 0 3px rgba(35, 148, 20, 0.3); /* focus ring / green glow   */
+
+  /* ---- Motion ------------------------------------------------------------ */
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+}

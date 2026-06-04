@@ -1,0 +1,149 @@
+/* Search combobox. Same input shell as Input; opens a stacked list of rows.
+   Sourced from preview/dropdown.html. */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-family: var(--font-ui);
+  font-size: var(--text-meta);
+  line-height: 1;
+  color: var(--fg);
+}
+
+/* anchor for the absolutely-positioned menu */
+.root {
+  position: relative;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 42px;
+  padding: 0 var(--space-3);
+  background: var(--surface);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--fg-2);
+  transition:
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+.control.open,
+.control:focus-within {
+  border-color: var(--green-500);
+  color: var(--fg-1);
+}
+.control.error {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-value);
+  font-size: var(--text-body);
+  color: var(--fg-1);
+}
+.input::placeholder {
+  color: var(--fg-2);
+}
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.adornment {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+.spinner {
+  display: inline-flex;
+  color: var(--fg-2);
+  animation: ds-spin 0.7s linear infinite;
+}
+@keyframes ds-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---- Menu ---------------------------------------------------------------- */
+.menu {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 264px;
+  overflow-y: auto;
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 11px var(--space-3);
+  font-family: var(--font-value);
+  font-size: var(--text-body);
+  color: var(--fg-2);
+  border-top: 1px solid var(--border);
+  cursor: pointer;
+}
+.option:first-child {
+  border-top: 0;
+}
+.option.highlighted {
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.04);
+}
+.option.selected {
+  color: var(--fg);
+}
+.option.disabled {
+  cursor: default;
+  color: var(--fg-3);
+}
+
+.optionDescription {
+  font-family: var(--font-ui);
+  font-size: var(--text-meta);
+  color: var(--fg-3);
+}
+
+.empty {
+  padding: 11px var(--space-3);
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  color: var(--fg-3);
+}
+
+.message {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: var(--error);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control {
+    transition: none;
+  }
+  .spinner {
+    animation-duration: 1.4s;
+  }
+}
