@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+html {
+  /* Dark UA widgets (scrollbars, form controls) — matches the dark theme. */
+  color-scheme: dark;
+}
+
 html,
 body {
   margin: 0;

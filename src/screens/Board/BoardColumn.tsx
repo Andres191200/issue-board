@@ -1,38 +1,39 @@
-import type { Task } from "./Board.types";
+import { useDroppable } from "@dnd-kit/core";
+import type { ColumnId, IssueCard } from "./Board.types";
+import { DraggableIssueCard } from "./DraggableIssueCard";
 import styles from "./Board.module.css";
 
 interface BoardColumnProps {
+  id: ColumnId;
   title: string;
-  tasks: readonly Task[];
+  cards: readonly IssueCard[];
 }
 
 /**
- * A single kanban column. Renders its header (title + count) and body. When the
- * column has no tasks it shows a centered "No tasks here" empty state — the
- * current state for every column until task cards are designed.
+ * A kanban column and drop target. Shows its cards, or a centered
+ * "No tasks here" empty state. The body highlights while a card is dragged over.
  * Top-level component (not inlined in Board) to avoid remounting on each render.
  */
-export function BoardColumn({ title, tasks }: BoardColumnProps) {
-  const isEmpty = tasks.length === 0;
+export function BoardColumn({ id, title, cards }: BoardColumnProps) {
+  const { setNodeRef, isOver } = useDroppable({ id });
+  const isEmpty = cards.length === 0;
+
+  const bodyClass = isOver
+    ? `${styles.columnBody} ${styles.columnBodyOver}`
+    : styles.columnBody;
 
   return (
     <section className={styles.column} aria-label={title}>
       <header className={styles.columnHeader}>
         <h2 className={styles.columnTitle}>{title}</h2>
-        <span className={styles.count}>{tasks.length}</span>
+        <span className={styles.count}>{cards.length}</span>
       </header>
 
-      <div className={styles.columnBody}>
+      <div ref={setNodeRef} className={bodyClass}>
         {isEmpty ? (
           <p className={styles.empty}>No tasks here</p>
         ) : (
-          // Task cards are intentionally not designed yet — placeholder keeps
-          // the populated state structurally complete.
-          tasks.map((task) => (
-            <div key={task.id} className={styles.taskPlaceholder}>
-              {task.title}
-            </div>
-          ))
+          cards.map((card) => <DraggableIssueCard key={card.id} card={card} />)
         )}
       </div>
     </section>

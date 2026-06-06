@@ -100,6 +100,15 @@
   gap: var(--space-3);
   padding: var(--space-4);
   overflow-y: auto;
+  border-radius: var(--radius-md);
+  transition: background var(--dur-fast) var(--ease);
+}
+
+/* Highlight the column while a card is dragged over it. */
+.columnBodyOver {
+  background: var(--surface);
+  outline: 2px dashed var(--green-500);
+  outline-offset: -6px;
 }
 
 /* ---- Empty state --------------------------------------------------------- */
@@ -107,19 +116,14 @@
   margin: auto;
   font-family: var(--font-ui);
   font-size: var(--text-label);
-  color: var(--fg-3);
+  color: var(--fg-2);
   text-align: center;
 }
 
-/* ---- Task placeholder (cards designed later) ----------------------------- */
-.taskPlaceholder {
-  padding: var(--space-3);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  font-family: var(--font-ui);
-  font-size: var(--text-body);
-  color: var(--fg-1);
+@media (prefers-reduced-motion: reduce) {
+  .columnBody {
+    transition: none;
+  }
 }
 
 /* On narrow viewports, keep full-width columns and scroll horizontally. */
