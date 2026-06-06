@@ -1,0 +1,176 @@
+/* Issue card — dark surface, built on the design-system tokens. */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  cursor: grab;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+
+.card:hover {
+  border-color: var(--fg-3);
+  box-shadow: var(--shadow-md);
+}
+
+/* outline removed but replaced by the green focus glow */
+.card:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-glow);
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+/* Source card while dragging — faded; the overlay is the moving copy. */
+.dragging {
+  opacity: 0.4;
+}
+
+/* Floating copy under the cursor. */
+.overlay {
+  cursor: grabbing;
+  box-shadow: var(--shadow-md);
+  transform: rotate(2deg) scale(1.02);
+}
+
+/* ---- Header: issue id + priority ---------------------------------------- */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.issueId {
+  font-family: var(--font-value);
+  font-size: var(--text-meta);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--fg-2);
+}
+
+/* ---- Priority pill ------------------------------------------------------- */
+.priority {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.priorityDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.priorityLow {
+  color: var(--fg-2);
+  background: var(--surface-2);
+  border-color: var(--border);
+}
+
+/* green = brand (--green-500), red = error (--error), shown translucent */
+.priorityMedium {
+  color: var(--green-700);
+  background: rgba(35, 148, 20, 0.14);
+  border-color: rgba(35, 148, 20, 0.4);
+}
+
+.priorityHigh {
+  color: #f08a8a;
+  background: rgba(197, 11, 11, 0.16);
+  border-color: rgba(197, 11, 11, 0.45);
+}
+
+/* ---- Footer: date + assignees ------------------------------------------- */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.date {
+  font-family: var(--font-value);
+  font-size: var(--text-meta);
+  color: var(--fg-2);
+}
+
+/* ---- Assignee avatars --------------------------------------------------- */
+.assignees {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin-left: -6px;
+  border: 2px solid var(--surface); /* ring matches card bg to separate overlaps */
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--on-primary);
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+/* Dark green tones — all keep strong contrast with white initials. */
+.tone0 {
+  background: var(--green-100);
+}
+.tone1 {
+  background: var(--green-200);
+}
+.tone2 {
+  background: var(--green-300);
+}
+.tone3 {
+  background: var(--green-400);
+}
+
+.overflow {
+  background: var(--surface-2);
+  color: var(--fg-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+  .overlay {
+    transform: none;
+  }
+}
