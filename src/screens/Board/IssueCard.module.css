@@ -91,11 +91,11 @@
   border-color: var(--border);
 }
 
-/* green = brand (--green-500), red = error (--error), shown translucent */
+/* amber = warning (--warning), red = error (--error), shown translucent */
 .priorityMedium {
-  color: var(--green-700);
-  background: rgba(35, 148, 20, 0.14);
-  border-color: rgba(35, 148, 20, 0.4);
+  color: var(--warning);
+  background: rgba(227, 179, 65, 0.16);
+  border-color: rgba(227, 179, 65, 0.4);
 }
 
 .priorityHigh {
