@@ -1,0 +1,329 @@
+/* New Task form — lives inside the portal Modal. Built on the design tokens. */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--fg-2);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+.close:hover {
+  background: var(--surface);
+  color: var(--fg-1);
+}
+.close:focus-visible {
+  outline: none;
+  border-color: var(--green-500);
+  box-shadow: var(--shadow-glow);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-6);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-family: var(--font-ui);
+  font-size: var(--text-meta);
+  line-height: 1;
+  color: var(--fg);
+}
+
+/* ---- Creator (read-only) ------------------------------------------------- */
+.creator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.creatorLabel {
+  font-family: var(--font-ui);
+  font-size: var(--text-meta);
+  color: var(--fg-2);
+}
+.creatorUser {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--fg-1);
+}
+.creatorAvatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-pill);
+  background: var(--green-300);
+  color: var(--on-primary);
+  font-size: var(--text-micro);
+  font-weight: 700;
+}
+
+/* ---- Textarea (matches the Input control look) --------------------------- */
+.textarea {
+  width: 100%;
+  min-height: 96px;
+  padding: var(--space-3);
+  background: var(--surface);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--fg-1);
+  font-family: var(--font-value);
+  font-size: var(--text-body);
+  line-height: 1.45;
+  resize: vertical;
+  transition:
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+.textarea::placeholder {
+  color: var(--fg-2);
+}
+.textarea:focus-visible {
+  outline: none;
+  border-color: var(--green-500);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ---- Priority segmented control ------------------------------------------ */
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.segment {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+
+.segmentOption {
+  position: relative;
+  display: block;
+}
+
+/* visually hidden but focusable radio */
+.segmentInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.segmentLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--fg-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  transition:
+    background var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+.segmentLabel:hover {
+  border-color: var(--fg-3);
+  color: var(--fg-1);
+}
+
+/* Checked state — one colour per priority. */
+.segmentInput:checked + .segmentLow {
+  background: var(--green-500);
+  border-color: var(--green-500);
+  color: var(--on-primary);
+}
+.segmentInput:checked + .segmentMedium {
+  background: var(--warning);
+  border-color: var(--warning);
+  color: var(--on-warning);
+}
+.segmentInput:checked + .segmentHigh {
+  background: var(--error);
+  border-color: var(--error);
+  color: var(--on-primary);
+}
+
+.segmentInput:focus-visible + .segmentLabel {
+  border-color: var(--green-500);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Helper text describing the selected priority. */
+.priorityHint {
+  margin: var(--space-1) 0 0;
+  font-family: var(--font-ui);
+  font-size: var(--text-meta);
+  line-height: 1.35;
+  color: var(--fg-2);
+}
+
+/* ---- Assignee picker ----------------------------------------------------- */
+.picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  max-height: 220px;
+  overflow-y: auto;
+  padding: var(--space-1);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.userRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--fg-1);
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    background var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+.userRow:hover {
+  background: var(--surface-2);
+}
+.userRow:focus-visible {
+  outline: none;
+  border-color: var(--green-500);
+  box-shadow: var(--shadow-glow);
+}
+.userRowSelected {
+  background: rgba(35, 148, 20, 0.12);
+  border-color: rgba(35, 148, 20, 0.4);
+}
+
+.pickerAvatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  color: var(--on-primary);
+  font-family: var(--font-ui);
+  font-size: var(--text-micro);
+  font-weight: 700;
+}
+
+.userName {
+  flex: 1;
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+}
+
+.check {
+  width: 16px;
+  text-align: center;
+  color: var(--green-700);
+  font-weight: 700;
+}
+
+/* dark green tones — strong contrast with white initials */
+.tone0 {
+  background: var(--green-100);
+}
+.tone1 {
+  background: var(--green-200);
+}
+.tone2 {
+  background: var(--green-300);
+}
+.tone3 {
+  background: var(--green-400);
+}
+
+/* ---- Validation message -------------------------------------------------- */
+.error {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--error);
+}
+
+/* ---- Footer actions ------------------------------------------------------ */
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .close,
+  .textarea,
+  .segmentLabel,
+  .userRow {
+    transition: none;
+  }
+}

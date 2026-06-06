@@ -38,6 +38,8 @@
 
   /* ---- Semantic ---------------------------------------------------------- */
   --error: #c50b0b;
+  --warning: #e3b341; /* mid amber/yellow — medium priority, caution     */
+  --on-warning: var(--bg); /* dark text for use on the warning fill      */
   --success: var(--green-500);
   --border: #2c2735; /* hairline on surfaces                            */
   --border-focus: var(--green-500);
